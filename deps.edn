@@ -5,6 +5,7 @@
 
   :fe-dev {:extra-deps
            {rum                       {:mvn/version "0.11.3"}
+            garden                    {:mvn/version "1.3.6"}
             com.bhauman/figwheel-main {:mvn/version "0.2.0"}}}
 
   :fig {:main-opts ["-m" "figwheel.main"]}}}

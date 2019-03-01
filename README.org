@@ -1,0 +1,5 @@
+To run the project, put the following command into the terminal in the
+project root:
+
+: clj -A:fe-dev:fig -b dev -r
+

@@ -5,14 +5,18 @@
 
 (def my-style
   [[:.my-1st-class
-    {:font-size "2em"}]])
+    {:font-size "3em"}]
+   [:.my-2nd-class
+    {:color "red"}]])
 
 (defc hello-world-component
   []
   [:div
    [:style (css my-style)]
    [:p {:class :my-1st-class}
-    "Hello lovely world!"]])
+    "Hello lovely world!"]
+   [:p {:class :my-2nd-class}
+    "Nice to meet you."]])
 
 (defn main-page []
   (mount

@@ -9,6 +9,7 @@
    [:.my-2nd-class
     {:color "red"}]])
 
+
 (defc hello-world-component
   []
   [:div
@@ -18,9 +19,23 @@
    [:p {:class :my-2nd-class}
     "Nice to meet you."]])
 
-(defn main-page []
+(defn main-page [comp]
   (mount
-   (hello-world-component)
+   (comp)
    js/document.body))
 
-(main-page)
+(main-page hello-world-component)
+
+(comment
+
+  ;; some rotating background image
+  (require '[cljs-crypto.rotate :as rot])
+  (main-page rot/happy-face)
+
+
+  
+  )
+
+
+
+

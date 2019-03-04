@@ -1,40 +1,26 @@
 (ns cljs-crypto.core
   (:require
    [garden.core :refer [css]]
-   [rum.core :refer [defc mount] :as rum]))
-
-(def my-style
-  [[:.my-1st-class
-    {:font-size "3em"}]
-   [:.my-2nd-class
-    {:color "red"}]])
-
-
-(defc hello-world-component
-  []
-  [:div
-   [:style (css my-style)]
-   [:p {:class :my-1st-class}
-    "Hello lovely world!"]
-   [:p {:class :my-2nd-class}
-    "Nice to meet you."]])
+   [rum.core :refer [defc mount] :as rum]
+   [cljs-crypto.input-label :as il]
+   ))
 
 (defn main-page [comp]
   (mount
    (comp)
    js/document.body))
 
-(main-page hello-world-component)
+;; (main-page hello-world-component)
+
+;; fancy input box
+;; (require '[cljs-crypto.input-label :as il])
+(main-page il/fancy-input)
 
 (comment
 
   ;; some rotating background image
   (require '[cljs-crypto.rotate :as rot])
-  (main-page rot/happy-face)
-
-
-  
-  )
+  (main-page rot/happy-face))
 
 
 

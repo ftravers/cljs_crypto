@@ -18,17 +18,16 @@
             :box-shadow "none"
             :color "#111"}]
    [:input:invalid {:outline 1}]
-   [:input:focus :input:valid {:border-color "#00dd22"}]])
-
-(defn get-style []
-  (str
-   (css my-style)
-   "input:focus~label,input:valid~label {
-  font-size: 14px; top: -24px; color: #00dd22;}"))
+   [:input:focus :input:valid {:border-color "#00dd22"}]
+   ["input:focus~label,input:valid~label"
+    {:font-size "14px"
+     :top "-24px"
+     :color "#dddd22"}]])
 
 (defc fancy-input []
   [:div
-   [:style (get-style)]
+   ;; [:style (get-style)]
+   [:style (css my-style)]
    [:span {:class :input-field}
     [:input {:type :text
              :required true

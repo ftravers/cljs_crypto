@@ -24,18 +24,26 @@
      :top "-24px"
      :color "#dddd22"}]])
 
+(defn fancy-input-2 [label id additional-attrs]
+  [:span {:class :input-field}
+   [:input
+    (merge {:type :text
+            :required true
+            :id id}
+           additional-attrs)]
+   [:label {:for id} label]])
+
+(def form-style
+  [[:.fancy-form
+    {:display :grid
+     :grid-gap "20px"
+     :grid-auto-rows "minmax(min-content, max-content)"
+     :grid-auto-columns "minmax(min-content, 200px)"
+     }]])
+
 (defc fancy-input []
-  [:div
-   ;; [:style (get-style)]
-   [:style (css my-style)]
-   [:span {:class :input-field}
-    [:input {:type :text
-             :required true
-             :id :name}]
-    [:label {:for :name} "Your Name:"]]
-   [:span {:class :input-field}
-    [:input {:type :text
-             :required true
-             :id :phone}]
-    [:label {:for :phone} "Phone Number:"]]])
+  [:div {:class :fancy-form}
+   [:style (css (concat form-style my-style))]
+   (fancy-input-2 "Your Name:" :name {:required true})
+   (fancy-input-2  "Phone Number:" :phone {:required true})])
 

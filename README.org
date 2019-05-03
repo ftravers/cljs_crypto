@@ -1,5 +1,51 @@
+
+* Quickstart
+
 To run the project, put the following command into the terminal in the
 project root:
 
 : clj -A:fe-dev:fig -b dev -r
 
+* Docs
+
+This library provides reusable UI components.  Integrating with the
+component is done by primarily by message passing.  First we'll show
+how to integrate with the input box:
+
+** Input Box
+
+#+BEGIN_SRC clojure
+  (ns ...
+    (:require
+     [cljs-crypto.input-label :as il]
+     [garden.core :refer [css]]
+     [rum.core :refer [defc mount]]))
+
+  (defn main-page [comp]
+    (mount
+     (comp)
+     (js/document.getElementById "app")))
+
+  (defc fancy-input []
+    [:div 
+     [:style (css il/fancy-style)]
+
+     (il/fancy-input {:label "Your Name:"
+                      :id ::name})])
+  (main-page fancy-input)
+#+END_SRC
+
+Now lets override the colors of the input box:
+
+#+BEGIN_SRC clojure
+  ...
+  (defc fancy-input []
+    [:div 
+     [:style (css (il/set-styles
+                   [[:label {:color "#0000aa"}]
+                    [:input {:color "#0000aa"}]
+                    [:input:focus :input:valid {:border-color "#0000aa"}]]))]
+     (il/fancy-input {:label "Your Name:"
+                      :id ::name})])
+  ...
+#+END_SRC

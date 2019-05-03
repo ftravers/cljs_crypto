@@ -1,5 +1,4 @@
 {:paths ["src" "resources" "target"]
-
  :aliases
  {:dev {:extra-paths ["test"]}
 
